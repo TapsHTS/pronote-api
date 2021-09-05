@@ -23,7 +23,7 @@ async function axioRequest({ url, body, data, method = 'GET', binary, jar = null
             return status === 401 || (status >= 200 && status <= 302)
         },
         // eslint-disable-next-line no-process-env
-        httpAgent: new HttpsProxyAgent(process.env.PRONOTE_API_PROXY)
+        httpsAgent: process.env.PRONOTE_API_PROXY ? new HttpsProxyAgent(process.env.PRONOTE_API_PROXY) : undefined
     };
 
     if (binary) {
