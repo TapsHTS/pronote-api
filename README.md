@@ -202,3 +202,7 @@ de récupérer la réponse complète de Pronote simplement traduite sans traitem
 Si jamais une requête dont vous avez besoin n'est pas exportée, vous pouvez utiliser la fonction 'request' qui permet
 de faire facilement une requête à Pronote. Et si vous voulez outrepasser/modifier la partie authentification, vous
 pouvez manuellement créer une session.
+
+## Utilisation d'un proxy
+
+Pronote API supporte l'ajout d'un proxy (`process.env.PRONOTE_API_PROXY`), sous la forme `http://user:pass@proxy:port`.

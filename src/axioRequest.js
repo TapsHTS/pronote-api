@@ -1,4 +1,5 @@
 const axios = require('axios');
+const HttpsProxyAgent = require('https-proxy-agent');
 
 async function axioRequest({ url, body, data, method = 'GET', binary, jar = null }) {
     let userAgent = 'Mozilla/5.0 (X11; Linux x86_64; rv:59.0) Gecko/20100101 Firefox/59.0';
@@ -20,7 +21,9 @@ async function axioRequest({ url, body, data, method = 'GET', binary, jar = null
         maxRedirects: 0,
         validateStatus(status) {
             return status === 401 || (status >= 200 && status <= 302)
-        }
+        },
+        // eslint-disable-next-line no-process-env
+        httpAgent: new HttpsProxyAgent(process.env.PRONOTE_API_PROXY)
     };
 
     if (binary) {
